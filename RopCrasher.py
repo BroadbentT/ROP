@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # coding:UTF-8
 
 # -------------------------------------------------------------------------------------
@@ -28,21 +28,21 @@ from termcolor import colored					# pip install termcolor
 # -------------------------------------------------------------------------------------
 
 if os.geteuid() != 0:
-    print "\nPlease run this python script as root..."
+    print("\nPlease run this python script as root...")
     exit(True)
 
 if len(sys.argv) < 2:
-    print "\nUse the command: python RopCrasher.py rop_file mode..."
+    print("\nUse the command: python RopCrasher.py rop_file mode...")
     exit(True)
 
 ropFile = sys.argv[1]
 
 if os.path.exists(ropFile) == 0:
-    print "\nFile " + ropFile + " was not found, did you spell it correctly?.."
+    print("\nFile " + ropFile + " was not found, did you spell it correctly?..")
     exit(True)
 
 if len(sys.argv) < 3:
-    print "\nUse the command: python RopCrasher.py rop_file mode..."
+    print( "\nUse the command: python RopCrasher.py rop_file mode...")
     exit(True)
 
 ropMode = sys.argv[2]
@@ -55,7 +55,7 @@ for mode in sysMode:
       chkMode = True
 
 if chkMode == False:
-   print "Error - Recognised modes include: critical, debug, error, info, notset, warn and warning..."
+   print("Error - Recognised modes include: critical, debug, error, info, notset, warn and warning...")
    exit (True)
 
 # -------------------------------------------------------------------------------------
@@ -68,22 +68,22 @@ if chkMode == False:
 
 def header():
    os.system("clear")
-   print "\t\t\t\t\t\t\t\t ____   ___  ____     ____ ____      _    ____  _   _ _____ ____   "
-   print "\t\t\t\t\t\t\t\t|  _ \ / _ \|  _ \   / ___|  _ \    / \  / ___|| | | | ____|  _ \  "
-   print "\t\t\t\t\t\t\t\t| |_) | | | | |_) | | |   | |_) |  / _ \ \___ \| |_| |  _| | |_) | "
-   print "\t\t\t\t\t\t\t\t|  _ <| |_| |  __/  | |___|  _ <  / ___ \ ___) |  _  | |___|  _ <  "
-   print "\t\t\t\t\t\t\t\t|_| \_|\___/|_|      \____|_| \_\/_/   \_\____/|_| |_|_____|_| \_\ "
-   print "\n\t\t\t\t\t\t\t\t       BY TERENCE BROADBENT BSc CYBER SECURITY (FIRST CLASS)   \n"  
+   print("\t\t\t\t\t\t\t\t ____   ___  ____     ____ ____      _    ____  _   _ _____ ____   ")
+   print("\t\t\t\t\t\t\t\t|  _ \ / _ \|  _ \   / ___|  _ \    / \  / ___|| | | | ____|  _ \  ")
+   print("\t\t\t\t\t\t\t\t| |_) | | | | |_) | | |   | |_) |  / _ \ \___ \| |_| |  _| | |_) | ")
+   print("\t\t\t\t\t\t\t\t|  _ <| |_| |  __/  | |___|  _ <  / ___ \ ___) |  _  | |___|  _ <  ")
+   print("\t\t\t\t\t\t\t\t|_| \_|\___/|_|      \____|_| \_\/_/   \_\____/|_| |_|_____|_| \_\ ")
+   print("\n\t\t\t\t\t\t\t\t       BY TERENCE BROADBENT BSc CYBER SECURITY (FIRST CLASS)   \n")  
 
 def subhead():
-   print "ROP PROGRAM:",
-   print colored (ropFile.upper(),'white')
-   print "DEBUG MODE :",
-   print colored(ropMode.upper() + "\n",'white') 
+   print("ROP PROGRAM:", end = '')
+   print(colored (ropFile.upper(),'white'))
+   print("DEBUG MODE :", end = '')
+   print(colored(ropMode.upper() + "\n",'white'))
 
 def message(message):
-   print "[" + colored("-",'yellow') + "]",
-   print colored(message,'white')
+   print("[" + colored("-",'yellow') + "]", end = '')
+   print(colored(message,'white'))
 
 # -------------------------------------------------------------------------------------
 # AUTHOR  : Terence Broadbent                                                    
@@ -102,7 +102,7 @@ context(terminal=['tmux', 'new-window'])			# GDP in new window.
 context.timeout = 3
 
 info("------------------------------------- PERTINENT INFORMATION -------------------------------------")
-info("If NIX is enabled, then the stack is read-only and you will need to use a return to libc exploit.")
+info("If NX is enabled, then the stack is read-only and you will need to use a return to libc exploit.")
 info("If CANARY is enabled, then the program checks to see if the stack has been smashed.")
 info("If FORTIFY is enabled, then the program checks for buffer overflow.")
 info("If PIE is disabled, then the program memory locations will stay the same.")
